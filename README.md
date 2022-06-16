@@ -42,4 +42,35 @@ javax.swing.Timer는 객체를 생성할때 2가지의 인자값을 받는다. �
 ```
 위와 같이 사용하도록 정의되어 있다. 내가 궁금했던 인자값으로 생성자를 집어넣을수있는가에 대해서 답변이 가능할것같다. 생성자를 직접 인자값으로 넣은것은 실행시킬 작업을 오버라이딩해야하는데 새로운객체를 생성하고 오버라이딩하는게아니라 한번에 작업을 하게 되서 저런코드가 나온것같다. (앞으로 위와같은 형식의 코드들을 더많이 접해보아야겠다.)
 
+
+### 완전히 해결
+익명이너클래스를 배우는 과정중 
+```java
+interface A {
+	public abstract void abc();
+	
+	}
+}
+
+class C {
+	void cde(A a) {
+		a.abc();
+	}
+}
+
+public class Main {
+
+	public static void main(String[] args) {
+		C c = new C();
+		c.cde(new A() {
+			public void abc() {
+				System.out.println("Hello");
+			}
+		});
+		
+	}
+}
+```
+위의 코드처럼 동일하게 사용하는 코드 즉 인자값으로 생성자를 넣어주는 방법을 배웠다. 참조변수를 만들 필요가 없고, 한번만 객체를 만들어서 넘겨줄때는 이렇게 익명이너클래스를 많이 사용하는데 이럴때 사용하는 방법이 주로 인자값으로 생성자를 넣어주어서 그안에서 바로 구현해서 값을 사용하는 방법이다.  
+
 https://docs.oracle.com/javase/7/docs/api/javax/swing/Timer.html 출처
